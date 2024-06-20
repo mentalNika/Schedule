@@ -1,126 +1,42 @@
-import { useAppSelector } from "@/app/store/hooks";
-// import { RootState } from "@reduxjs/toolkit/query";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
-import { ISchedule } from "./Schedule.type";
+import { ApiStatus, ISchedule } from "./Schedule.type";
+import { getUserListAction, getMondayListAction } from "./ScheduleSlice";
 
 export const ScheduleList = () => {
   const { day, list, listStatus } = useAppSelector(
     (state: RootState) => state.user
   );
 
-  console.log("День", day);
-  console.log("Список", list);
-  console.log("Статус", listStatus);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getUserListAction());
+    dispatch(getMondayListAction());
+  }, []);
 
   return (
     <ul>
-      {list.map((schedule: ISchedule) => (
-        <li key={schedule.id}>
-          <div>
-            <h2>{day}</h2>
-            <ul>
-              <li>
-                <ul>
-                  <li>{schedule.subject}</li>
-                  <li>{schedule.time}</li>
-                  <li>{schedule.classroom}</li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </li>
-      ))}
+      {listStatus === ApiStatus.ideal &&
+        list.map((schedule: ISchedule, index: number) => (
+          <li key={schedule.id}>
+            <div>
+              <h2>{day}</h2>
+              <ul>
+                <li>
+                  <ul>
+                    <li>{schedule.subject}</li>
+                    <li>{schedule.time}</li>
+                    <li>{schedule.classroom}</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </li>
+        ))}
+      {listStatus === ApiStatus.loading && <p>Расписание загружается</p>}
+      {listStatus === ApiStatus.error && <p>Произошла ошибка</p>}
     </ul>
-    // <ul>
-    //   <li>
-    //     <div>
-    //       <h2>Понедельник</h2>
-    //       <ul>
-    //         <li>
-    //           <ul>
-    //             <li>1 пара</li>
-    //             <li>9:00</li>
-    //             <li>ауд. 15</li>
-    //             <li>Русский</li>
-    //           </ul>
-    //         </li>
-
-    //         <ul>
-    //           <li>2 пара</li>
-    //           <li>10:20</li>
-    //           <li>ауд. 15</li>
-    //           <li>Экономика</li>
-    //         </ul>
-
-    //         <ul>
-    //           <li>3 пара</li>
-    //           <li>11:40</li>
-    //           <li>ауд. 15</li>
-    //           <li>Математика</li>
-    //         </ul>
-    //       </ul>
-    //     </div>
-    //   </li>
-
-    //   <li>
-    //     <div>
-    //       <h2>Понедельник</h2>
-    //       <ul>
-    //         <li>
-    //           <ul>
-    //             <li>1 пара</li>
-    //             <li>9:00</li>
-    //             <li>ауд. 15</li>
-    //             <li>Русский</li>
-    //           </ul>
-    //         </li>
-
-    //         <ul>
-    //           <li>2 пара</li>
-    //           <li>10:20</li>
-    //           <li>ауд. 15</li>
-    //           <li>Экономика</li>
-    //         </ul>
-
-    //         <ul>
-    //           <li>3 пара</li>
-    //           <li>11:40</li>
-    //           <li>ауд. 15</li>
-    //           <li>Математика</li>
-    //         </ul>
-    //       </ul>
-    //     </div>
-    //   </li>
-
-    //   <li>
-    //     <div>
-    //       <h2>Понедельник</h2>
-    //       <ul>
-    //         <li>
-    //           <ul>
-    //             <li>1 пара</li>
-    //             <li>9:00</li>
-    //             <li>ауд. 15</li>
-    //             <li>Русский</li>
-    //           </ul>
-    //         </li>
-
-    //         <ul>
-    //           <li>2 пара</li>
-    //           <li>10:20</li>
-    //           <li>ауд. 15</li>
-    //           <li>Экономика</li>
-    //         </ul>
-
-    //         <ul>
-    //           <li>3 пара</li>
-    //           <li>11:40</li>
-    //           <li>ауд. 15</li>
-    //           <li>Математика</li>
-    //         </ul>
-    //       </ul>
-    //     </div>
-    //   </li>
-    // </ul>
   );
 };

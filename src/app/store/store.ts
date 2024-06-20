@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import userReducer from "./ScheduleSlice";
+import userReducer from "../components/Schedule/ScheduleSlice";
 
 export const store = configureStore({
   reducer: {

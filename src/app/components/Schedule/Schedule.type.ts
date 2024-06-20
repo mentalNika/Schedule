@@ -15,7 +15,7 @@ export enum ApiStatus {
 export interface IScheduleState {
   day: string;
   list: ISchedule[];
-  listStatus: ApiStatus.ideal;
+  listStatus: ApiStatus;
 }
 
 export const defaultList: ISchedule[] = [

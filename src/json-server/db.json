@@ -1,0 +1,122 @@
+{
+  "Monday": [
+    {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Русский"
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Математика"
+    }
+  ],
+  "Tuesday": [
+    {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Русский"
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Математика"
+    },
+    {
+      "id": "3",
+      "time": "11:40",
+      "classroom": "17",
+      "subject": "Русский"
+    },
+    {
+      "id": "4",
+      "time": "13:00",
+      "classroom": "15",
+      "subject": "Математика"
+    }
+  ],
+  "Wednesday": [
+    {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Русский"
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Математика"
+    },
+    {
+      "time": "16:00",
+      "classroom": "21",
+      "subject": "Физика",
+      "id": "3"
+    },
+    {
+      "id": "4",
+      "time": "13:00",
+      "classroom": "15",
+      "subject": "Математика"
+    }
+  ],
+  "Thursday": [
+    {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Русский"
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Математика"
+    },
+    {
+      "id": "3",
+      "time": "11:40",
+      "classroom": "17",
+      "subject": "Русский"
+    },
+    {
+      "id": "4",
+      "time": "13:00",
+      "classroom": "15",
+      "subject": "Математика"
+    }
+  ],
+  "Friday": [
+    {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Русский"
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Математика"
+    },
+    {
+      "id": "3",
+      "time": "11:40",
+      "classroom": "17",
+      "subject": "Русский"
+    },
+    {
+      "id": "4",
+      "time": "13:00",
+      "classroom": "15",
+      "subject": "Математика"
+    }
+  ],
+  "Saturday": [{ "type": "Weekend" }],
+  "Sunday": [{ "type": "Weekend" }]
+}
