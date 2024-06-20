@@ -33,17 +33,19 @@ export const ScheduleList = () => {
         <ul key={day}>
           <h2>{day}</h2>
           {schedules[day].listStatus === ApiStatus.ideal &&
-            schedules[day].list.map((schedule: ISchedule, index: number) => (
-              <li key={schedule.id}>
-                <div>
-                  <ul>
+            (schedules[day].list.some((schedule) => schedule.weekend) ? (
+              <li>Сегодня выходной</li>
+            ) : (
+              schedules[day].list.map((schedule: ISchedule, index: number) => (
+                <li key={schedule.id}>
+                  <div>
                     <li>№ {schedule.id}</li>
                     <li>{schedule.subject}</li>
                     <li>{schedule.time}</li>
                     <li>{schedule.classroom}</li>
-                  </ul>
-                </div>
-              </li>
+                  </div>
+                </li>
+              ))
             ))}
           {schedules[day].listStatus === ApiStatus.loading && (
             <p>Расписание загружается для {day}</p>
