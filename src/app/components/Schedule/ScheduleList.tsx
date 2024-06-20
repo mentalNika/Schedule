@@ -24,7 +24,6 @@ export const ScheduleList = () => {
     dispatch(getFridayListAction());
     dispatch(getSaturdayListAction());
     dispatch(getSundayListAction());
-    // Добавьте другие вызовы экшенов для других дней недели, если необходимо
   }, []);
 
   return (

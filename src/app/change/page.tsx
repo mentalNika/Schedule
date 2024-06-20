@@ -1,7 +1,11 @@
+"use client";
+
+import { ScheduleForm } from "../components/Form/ScheduleForm";
+
 const changeSchudele = () => {
   return (
     <main>
-      <h1>Change</h1>
+      <ScheduleForm />
     </main>
   );
 };
