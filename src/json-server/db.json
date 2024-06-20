@@ -26,22 +26,19 @@
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Math",
-      "weekend": false
+      "subject": "Math"
     },
     {
       "id": "3",
       "time": "11:40",
       "classroom": "17",
-      "subject": "Russian language",
-      "weekend": false
+      "subject": "Russian language"
     },
     {
       "id": "4",
       "time": "13:00",
       "classroom": "15",
-      "subject": "Math",
-      "weekend": false
+      "subject": "Math"
     }
   ],
   "Wednesday": [
@@ -125,6 +122,16 @@
       "subject": "Math"
     }
   ],
-  "Saturday": [{ "type": "Weekend", "weekend": true }],
-  "Sunday": [{ "type": "Weekend", "weekend": true }]
+  "Saturday": [
+    {
+      "type": "Weekend",
+      "weekend": true
+    }
+  ],
+  "Sunday": [
+    {
+      "type": "Weekend",
+      "weekend": true
+    }
+  ]
 }

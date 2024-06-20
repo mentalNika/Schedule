@@ -132,6 +132,10 @@ const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    // builder.addCase(getMondayListAction.pending, (state) => {
+    //   state.schedules.Monday.listStatus = ApiStatus.loading;
+    // });
+
     builder.addCase(getMondayListAction.fulfilled, (state, action) => {
       state.schedules.Monday.list = action.payload;
       state.schedules.Monday.listStatus = ApiStatus.ideal;

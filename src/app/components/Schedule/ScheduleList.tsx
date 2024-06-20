@@ -42,7 +42,7 @@ export const ScheduleList = () => {
                     <li>№ {schedule.id}</li>
                     <li>{schedule.subject}</li>
                     <li>{schedule.time}</li>
-                    <li>{schedule.classroom}</li>
+                    <li>Аудитория {schedule.classroom}</li>
                   </div>
                 </li>
               ))
