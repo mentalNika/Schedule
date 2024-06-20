@@ -12,3 +12,19 @@ export const getTuesdayList = async () => {
 export const getWednesdayList = async () => {
   return await httpService.get(ApiConfig.wednesday);
 };
+
+export const getThursdayList = async () => {
+  return await httpService.get(ApiConfig.thursday);
+};
+
+export const getFridayList = async () => {
+  return await httpService.get(ApiConfig.friday);
+};
+
+export const getSaturdayList = async () => {
+  return await httpService.get(ApiConfig.saturday);
+};
+
+export const getSundayList = async () => {
+  return await httpService.get(ApiConfig.sunday);
+};

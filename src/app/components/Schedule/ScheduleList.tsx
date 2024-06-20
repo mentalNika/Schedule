@@ -2,15 +2,28 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import { ApiStatus, ISchedule } from "./Schedule.type";
-import { getUserListAction, getTuesdayListAction } from "./ScheduleSlice";
+import {
+  getFridayListAction,
+  getMondayListAction,
+  getSaturdayListAction,
+  getSundayListAction,
+  getThursdayListAction,
+  getTuesdayListAction,
+  getWednesdayListAction,
+} from "./ScheduleSlice";
 
 export const ScheduleList = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(getUserListAction());
+    dispatch(getMondayListAction());
     dispatch(getTuesdayListAction());
+    dispatch(getWednesdayListAction());
+    dispatch(getThursdayListAction());
+    dispatch(getFridayListAction());
+    dispatch(getSaturdayListAction());
+    dispatch(getSundayListAction());
     // Добавьте другие вызовы экшенов для других дней недели, если необходимо
   }, []);
 
