@@ -13,10 +13,17 @@ export enum ApiStatus {
 }
 
 export interface IScheduleState {
-  day: string;
-  list: ISchedule[];
-  listStatus: ApiStatus;
+  schedules: {
+    [day: string]: {
+      day: string;
+      list: []; // замените any на тип Вашего списка
+      listStatus: ApiStatus; // замените ApiStatus на Ваш тип статуса
+    };
+  };
 }
+// day: string;
+// list: ISchedule[];
+// listStatus: ApiStatus;
 
 export const defaultList: ISchedule[] = [
   {

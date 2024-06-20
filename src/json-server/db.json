@@ -1,16 +1,17 @@
 {
   "Monday": [
+    { "day": "Monday" },
     {
       "id": "1",
       "time": "9:30",
       "classroom": "12",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     }
   ],
   "Tuesday": [
@@ -18,25 +19,25 @@
       "id": "1",
       "time": "9:30",
       "classroom": "12",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     },
     {
       "id": "3",
       "time": "11:40",
       "classroom": "17",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "4",
       "time": "13:00",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     }
   ],
   "Wednesday": [
@@ -44,13 +45,13 @@
       "id": "1",
       "time": "9:30",
       "classroom": "12",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     },
     {
       "time": "16:00",
@@ -62,7 +63,7 @@
       "id": "4",
       "time": "13:00",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     }
   ],
   "Thursday": [
@@ -70,25 +71,25 @@
       "id": "1",
       "time": "9:30",
       "classroom": "12",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     },
     {
       "id": "3",
       "time": "11:40",
       "classroom": "17",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "4",
       "time": "13:00",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     }
   ],
   "Friday": [
@@ -96,25 +97,25 @@
       "id": "1",
       "time": "9:30",
       "classroom": "12",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "2",
       "time": "10:20",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     },
     {
       "id": "3",
       "time": "11:40",
       "classroom": "17",
-      "subject": "Русский"
+      "subject": "Russian language"
     },
     {
       "id": "4",
       "time": "13:00",
       "classroom": "15",
-      "subject": "Математика"
+      "subject": "Math"
     }
   ],
   "Saturday": [{ "type": "Weekend" }],
