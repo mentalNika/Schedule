@@ -66,16 +66,13 @@ export const ScheduleForm = () => {
   const onSubmitForm = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Создаем объект data с данными из lessons
     const data = {
       list: lessons,
     };
     console.log(data);
 
-    // Вызываем функцию createLessons для обновления расписания
     await dispatch(createLessons(data));
 
-    // После успешного обновления, получаем обновленный список для понедельника
     dispatch(getMondayListAction());
   };
 
