@@ -33,7 +33,7 @@ export const ScheduleList = () => {
           <h2>{day}</h2>
           {schedules[day].listStatus === ApiStatus.ideal &&
             (schedules[day].list.some((schedule) => schedule.weekend) ? (
-              <li>Сегодня выходной</li>
+              <li>Day of</li>
             ) : (
               schedules[day].list.map((schedule: ISchedule, index: number) => (
                 <li key={schedule.id}>
@@ -41,16 +41,16 @@ export const ScheduleList = () => {
                     <li>№ {schedule.id}</li>
                     <li>{schedule.subject}</li>
                     <li>{schedule.time}</li>
-                    <li>Аудитория {schedule.classroom}</li>
+                    <li>Cabinet {schedule.classroom}</li>
                   </div>
                 </li>
               ))
             ))}
           {schedules[day].listStatus === ApiStatus.loading && (
-            <p>Расписание загружается для {day}</p>
+            <p>Schedule is loading for {day}</p>
           )}
           {schedules[day].listStatus === ApiStatus.error && (
-            <p>Произошла ошибка при загрузке для {day}</p>
+            <p>Error for {day}</p>
           )}
         </ul>
       ))}

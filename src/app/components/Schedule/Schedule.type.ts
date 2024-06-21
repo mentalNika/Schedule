@@ -17,7 +17,7 @@ export interface IScheduleState {
   schedules: {
     [day: string]: {
       day: string;
-      list: ISchedule[]; // Теперь список имеет тип ISchedule
+      list: ISchedule[]; // список имеет тип ISchedule
       listStatus: ApiStatus;
     };
   };

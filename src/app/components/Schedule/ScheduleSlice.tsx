@@ -54,7 +54,7 @@ export const getMondayListAction = createAsyncThunk(
   "user/getMondayListAction",
   async () => {
     const response = await getMondayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -65,7 +65,7 @@ export const getTuesdayListAction = createAsyncThunk(
   "user/getTuesdayListAction",
   async () => {
     const response = await getTuesdayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -76,7 +76,7 @@ export const getWednesdayListAction = createAsyncThunk(
   "user/getWednesdayListAction",
   async () => {
     const response = await getWednesdayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -87,7 +87,7 @@ export const getThursdayListAction = createAsyncThunk(
   "user/getThursdayListAction",
   async () => {
     const response = await getThursdayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -98,7 +98,7 @@ export const getFridayListAction = createAsyncThunk(
   "user/getFridayListAction",
   async () => {
     const response = await getFridayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -109,7 +109,7 @@ export const getSaturdayListAction = createAsyncThunk(
   "user/getSaturdayListAction",
   async () => {
     const response = await getSaturdayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data
@@ -120,7 +120,7 @@ export const getSundayListAction = createAsyncThunk(
   "user/getSundayListAction",
   async () => {
     const response = await getSundayList();
-    console.log(response);
+
     return response.data;
     //api to get list
     //return response data

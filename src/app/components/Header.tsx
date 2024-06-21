@@ -2,13 +2,13 @@ import Link from "next/link";
 
 export const Header = () => {
   const navLinks = [
-    { id: 1, href: "/", value: "Расписание" },
+    { id: 1, href: "/", value: "Schedule" },
 
-    { id: 2, href: "/change", value: "Изменить Расписание" },
+    { id: 2, href: "/change", value: "Change Schedule" },
   ];
   return (
     <header>
-      <h1>Расписание для группы №1</h1>
+      <h1>Schedule for the group №1</h1>
       <nav>
         <ul>
           {navLinks.map((link) => {
