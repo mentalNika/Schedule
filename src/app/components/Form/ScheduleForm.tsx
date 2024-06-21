@@ -13,6 +13,7 @@ import {
 } from "../Schedule/ScheduleSlice";
 import { AddLessonBtn } from "./AddLessonBtn";
 import { ClearFieldsBtn } from "./ClearFieldsBtn";
+import { DeleteLessonBtn } from "./DeleteLessonBtn";
 
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
@@ -39,10 +40,10 @@ export const ScheduleForm = () => {
 
   console.log("лесонас", lessons);
 
-  const deleteLesson = (index: number) => {
-    const updatedLessons = lessons.filter((lesson, i) => i !== index);
-    setLessons(updatedLessons);
-  };
+  // const deleteLesson = (index: number) => {
+  //   const updatedLessons = lessons.filter((lesson, i) => i !== index);
+  //   setLessons(updatedLessons);
+  // };
 
   const handleInputChange = (
     index: number,
@@ -65,16 +66,6 @@ export const ScheduleForm = () => {
   const disableFunction = (day: any) => {
     return schedules[day].list.some((schedule) => schedule.weekend);
   };
-
-  // const clearFields = () => {
-  //   const clearedLessons = lessons.map((lesson) => ({
-  //     ...lesson,
-  //     time: "",
-  //     classroom: "",
-  //     subject: "",
-  //   }));
-  //   setLessons(clearedLessons);
-  // };
 
   return (
     <div>
@@ -138,9 +129,11 @@ export const ScheduleForm = () => {
               />
             </div>
             {lessons.length > 1 && (
-              <button type="button" onClick={() => deleteLesson(index)}>
-                Delete Lesson
-              </button>
+              <DeleteLessonBtn
+                lessons={lessons}
+                setLessons={setLessons}
+                index={index}
+              />
             )}
           </div>
         ))}

@@ -1,11 +1,13 @@
 import { ISchedule } from "../Schedule/Schedule.type";
 
-interface AddLessonProps {
+interface ClearFieldsBtnProps {
   lessons: ISchedule[];
   setLessons: React.Dispatch<React.SetStateAction<ISchedule[]>>;
 }
 
-export const ClearFieldsBtn: React.FC<AddLessonProps> = (props: any) => {
+export const ClearFieldsBtn: React.FC<ClearFieldsBtnProps> = (
+  props: ClearFieldsBtnProps
+) => {
   const { lessons, setLessons } = props;
 
   const handleClearFields = () => {

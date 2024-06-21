@@ -1,11 +1,13 @@
 import { ISchedule } from "../Schedule/Schedule.type";
 
-interface AddLessonProps {
+interface AddLessonBtnProps {
   lessons: ISchedule[];
   setLessons: React.Dispatch<React.SetStateAction<ISchedule[]>>;
 }
 
-export const AddLessonBtn: React.FC<AddLessonProps> = (props: any) => {
+export const AddLessonBtn: React.FC<AddLessonBtnProps> = (
+  props: AddLessonBtnProps
+) => {
   const { lessons, setLessons } = props;
 
   const handleAddLesson = () => {
