@@ -38,7 +38,7 @@ export const ScheduleList = () => {
               schedules[day].list.map((schedule: ISchedule, index: number) => (
                 <li key={schedule.id}>
                   <div>
-                    <li>№ {schedule.id}</li>
+                    <li>Lesson {schedule.id}</li>
                     <li>{schedule.subject}</li>
                     <li>{schedule.time}</li>
                     <li>Cabinet {schedule.classroom}</li>

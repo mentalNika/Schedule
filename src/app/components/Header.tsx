@@ -22,7 +22,7 @@ export const Header = () => {
           })}
         </ul>
       </nav>
-      <img src="#" alt="logo"></img>
+      <img src="/images/1.png" width={300} alt="logo"></img>
     </header>
   );
 };

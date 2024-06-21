@@ -50,6 +50,11 @@ export const ScheduleForm = () => {
     }
   };
 
+  const deleteLesson = (index: number) => {
+    const updatedLessons = lessons.filter((lesson, i) => i !== index);
+    setLessons(updatedLessons);
+  };
+
   const handleInputChange = (
     index: number,
     field: string,
@@ -143,6 +148,11 @@ export const ScheduleForm = () => {
                 disabled={lessons.some((lesson) => lesson.weekend)}
               />
             </div>
+            {lessons.length > 1 && (
+              <button type="button" onClick={() => deleteLesson(index)}>
+                Delete Lesson
+              </button>
+            )}
           </div>
         ))}
         {lessons.length < 6 && (

@@ -124,12 +124,26 @@
   ],
   "Saturday": [
     {
-      "weekend": true
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Russian language",
+      "weekend": false
     }
   ],
   "Sunday": [
     {
+      "id": "1",
+      "time": "9:30",
+      "classroom": "12",
+      "subject": "Russian language",
       "weekend": false
+    },
+    {
+      "id": "2",
+      "time": "10:20",
+      "classroom": "15",
+      "subject": "Math"
     }
   ]
 }
