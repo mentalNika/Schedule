@@ -11,7 +11,7 @@ import {
   getTuesdayListAction,
   getWednesdayListAction,
 } from "../Schedule/ScheduleSlice";
-import { AddLesson } from "./AddLesson";
+import { AddLessonBtn } from "./AddLessonBtn";
 
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
@@ -37,19 +37,6 @@ export const ScheduleForm = () => {
   }, [selectedDay, schedules]);
 
   console.log("лесонас", lessons);
-
-  // const addLesson = () => {
-  //   if (lessons.length < 6) {
-  //     const newLesson: ISchedule = {
-  //       id: lessons.length + 1,
-  //       time: "",
-  //       classroom: "",
-  //       subject: "",
-  //       weekend: false,
-  //     };
-  //     setLessons([...lessons, newLesson]);
-  //   }
-  // };
 
   const deleteLesson = (index: number) => {
     const updatedLessons = lessons.filter((lesson, i) => i !== index);
@@ -157,7 +144,7 @@ export const ScheduleForm = () => {
           </div>
         ))}
         {lessons.length < 6 && (
-          <AddLesson lessons={lessons} setLessons={setLessons} />
+          <AddLessonBtn lessons={lessons} setLessons={setLessons} />
         )}
         <button type="button" onClick={clearFields}>
           Clear Fields
