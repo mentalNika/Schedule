@@ -14,16 +14,21 @@ import {
 
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
-  const dispatch = useAppDispatch();
+
   // console.log("РАСПИСАНИЕ", schedules);
 
   const [selectedDay, setSelectedDay] = useState("Monday");
-  const handleDayChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = e.target.value;
-    setSelectedDay(selectedValue);
-    console.log(selectedValue);
-  };
+  const [schedule, setSchedule] = useState([
+    {
+      id: "",
+      time: "9:00",
+      classroom: "",
+      subject: "Any Subject",
+      isWeekend: false,
+    },
+  ]);
 
+  const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getMondayListAction());
     dispatch(getTuesdayListAction());
@@ -34,8 +39,14 @@ export const ScheduleForm = () => {
     dispatch(getSundayListAction());
   }, []);
 
+  const handleDayChange = (e: ChangeEvent<HTMLSelectElement>) => {
+    const selectedValue = e.target.value;
+    setSelectedDay(selectedValue);
+    console.log(selectedValue);
+  };
+
   return (
-    <div>
+    <>
       <h2>Изменить Расписание</h2>
       <select value={selectedDay} onChange={handleDayChange}>
         <option value="Monday">Monday</option>
@@ -46,43 +57,66 @@ export const ScheduleForm = () => {
         <option value="Saturday">Saturday</option>
         <option value="Sunday">Sunday</option>
       </select>
-
-      {schedules[selectedDay].listStatus === ApiStatus.ideal &&
-        schedules[selectedDay].list.map(
-          (schedule: ISchedule, index: number) => (
-            <form action="post">
-              <div>
-                <label>Номер пары</label>
-                <input type="number" value={schedule.id} />
-              </div>
-              <div>
-                <label>Время</label>
-                <input type="text" value={schedule.time} />
-              </div>
-              <div>
-                <label>Номер аудитории</label>
-                <input type="text" value={schedule.classroom} />
-              </div>
-              <div>
-                <label>Название предмета</label>
-                <input type="text" value={schedule.subject} />
-              </div>
-            </form>
-          )
-        )}
-    </div>
+      <form action="post">
+        {schedules[selectedDay].listStatus === ApiStatus.ideal &&
+        schedules[selectedDay].list.some((schedule) => schedule.weekend)
+          ? schedules[selectedDay].list.map(
+              (schedule: ISchedule, index: number) => (
+                <>
+                  <div>
+                    <label>Номер пары</label>
+                    <input type="number" value={schedule.id} disabled />
+                  </div>
+                  <div>
+                    <label>Время</label>
+                    <input type="text" value={schedule.time} disabled />
+                  </div>
+                  <div>
+                    <label>Номер аудитории</label>
+                    <input type="text" value={schedule.classroom} disabled />
+                  </div>
+                  <div>
+                    <label>Название предмета</label>
+                    <input
+                      type="text"
+                      value={schedule.subject}
+                      disabled={schedule.weekend}
+                    />
+                  </div>
+                  <div>
+                    <label>Выходной</label>
+                    <input type="checkbox" checked={schedule.weekend} />
+                  </div>
+                </>
+              )
+            )
+          : schedules[selectedDay].list.map(
+              (schedule: ISchedule, index: number) => (
+                <>
+                  <div>
+                    <label>Номер пары</label>
+                    <input type="number" value={schedule.id} />
+                  </div>
+                  <div>
+                    <label>Время</label>
+                    <input type="text" value={schedule.time} />
+                  </div>
+                  <div>
+                    <label>Номер аудитории</label>
+                    <input type="text" value={schedule.classroom} />
+                  </div>
+                  <div>
+                    <label>Название предмета</label>
+                    <input type="text" value={schedule.subject} />
+                  </div>
+                  <div>
+                    <label>Выходной</label>
+                    <input type="checkbox" checked={schedule.weekend} />
+                  </div>
+                </>
+              )
+            )}
+      </form>
+    </>
   );
 };
-
-// const ScheduleForm = () => {
-//   return (
-//     <div>
-//
-//       <form>
-//         <label htmlFor=""></label>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default ScheduleForm;
