@@ -1,30 +1,36 @@
 import httpService from "../../service/HttpService";
 import ApiConfig from "../../service/ApiConfig";
+import { ISchedule } from "./Schedule.type";
 
 export const getMondayList = async () => {
-  return await httpService.get(ApiConfig.monday);
+  return await httpService.get<ISchedule[]>(ApiConfig.monday);
 };
 
 export const getTuesdayList = async () => {
-  return await httpService.get(ApiConfig.tuesday);
+  return await httpService.get<ISchedule[]>(ApiConfig.tuesday);
 };
 
 export const getWednesdayList = async () => {
-  return await httpService.get(ApiConfig.wednesday);
+  return await httpService.get<ISchedule[]>(ApiConfig.wednesday);
 };
 
 export const getThursdayList = async () => {
-  return await httpService.get(ApiConfig.thursday);
+  return await httpService.get<ISchedule[]>(ApiConfig.thursday);
 };
 
 export const getFridayList = async () => {
-  return await httpService.get(ApiConfig.friday);
+  return await httpService.get<ISchedule[]>(ApiConfig.friday);
 };
 
 export const getSaturdayList = async () => {
-  return await httpService.get(ApiConfig.saturday);
+  return await httpService.get<ISchedule[]>(ApiConfig.saturday);
 };
 
 export const getSundayList = async () => {
-  return await httpService.get(ApiConfig.sunday);
+  return await httpService.get<ISchedule[]>(ApiConfig.sunday);
+};
+
+//Change page
+export const createLessons = async (data: any) => {
+  return await httpService.post(ApiConfig.monday, data);
 };

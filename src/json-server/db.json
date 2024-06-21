@@ -12,6 +12,56 @@
       "time": "10:20",
       "classroom": "15",
       "subject": "Math"
+    },
+    {
+      "0": {
+        "id": "1",
+        "time": "9:30",
+        "classroom": "12",
+        "subject": "Russian language",
+        "weekend": false
+      },
+      "1": {
+        "id": "2",
+        "time": "10:20",
+        "classroom": "15",
+        "subject": "Math"
+      },
+      "id": "dcd3"
+    },
+    {
+      "id": "3b55",
+      "list": [
+        {
+          "id": "1",
+          "time": "9:30",
+          "classroom": "12",
+          "subject": "Russian language",
+          "weekend": false
+        },
+        {
+          "id": "2",
+          "time": "10:20",
+          "classroom": "15",
+          "subject": "Math"
+        },
+        {
+          "0": {
+            "id": "1",
+            "time": "9:30",
+            "classroom": "12",
+            "subject": "Russian language",
+            "weekend": false
+          },
+          "1": {
+            "id": "2",
+            "time": "10:20",
+            "classroom": "15",
+            "subject": "Math"
+          },
+          "id": "dcd3"
+        }
+      ]
     }
   ],
   "Tuesday": [

@@ -19,6 +19,7 @@ export interface IScheduleState {
       day: string;
       list: ISchedule[]; // список имеет тип ISchedule
       listStatus: ApiStatus;
+      createLessonStatus: ApiStatus;
     };
   };
 }

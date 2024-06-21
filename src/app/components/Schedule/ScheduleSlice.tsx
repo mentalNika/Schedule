@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { ApiStatus, IScheduleState } from "./Schedule.type";
 import {
+  createLessons,
   getFridayList,
   getMondayList,
   getSaturdayList,
@@ -16,36 +17,43 @@ const initialState: IScheduleState = {
       day: "Monday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Tuesday: {
       day: "Tuesday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Wednesday: {
       day: "Wednesday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Thursday: {
       day: "Thursday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Friday: {
       day: "Friday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Saturday: {
       day: "Saturday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
     Sunday: {
       day: "Sunday",
       list: [],
       listStatus: ApiStatus.ideal,
+      createLessonStatus: ApiStatus.ideal,
     },
   },
 };
@@ -127,15 +135,19 @@ export const getSundayListAction = createAsyncThunk(
   }
 );
 
+export const createScheduleAction = createAsyncThunk(
+  "user/createScheduleAction",
+  async (data) => {
+    const response = await createLessons(data);
+    return response.data;
+  }
+);
+
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    // builder.addCase(getMondayListAction.pending, (state) => {
-    //   state.schedules.Monday.listStatus = ApiStatus.loading;
-    // });
-
     builder.addCase(getMondayListAction.fulfilled, (state, action) => {
       state.schedules.Monday.list = action.payload;
       state.schedules.Monday.listStatus = ApiStatus.ideal;
@@ -169,6 +181,11 @@ const userSlice = createSlice({
     builder.addCase(getSundayListAction.fulfilled, (state, action) => {
       state.schedules.Sunday.list = action.payload;
       state.schedules.Sunday.listStatus = ApiStatus.ideal;
+    });
+
+    //change page
+    builder.addCase(createScheduleAction.fulfilled, (state, action) => {
+      state.schedules.Monday.list = action.payload;
     });
   },
 });

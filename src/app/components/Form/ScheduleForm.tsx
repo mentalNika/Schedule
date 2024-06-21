@@ -1,8 +1,9 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import { ApiStatus, ISchedule } from "../Schedule/Schedule.type";
 import {
+  createScheduleAction,
   getFridayListAction,
   getMondayListAction,
   getSaturdayListAction,
@@ -14,6 +15,8 @@ import {
 import { AddLessonBtn } from "./AddLessonBtn";
 import { ClearFieldsBtn } from "./ClearFieldsBtn";
 import { DeleteLessonBtn } from "./DeleteLessonBtn";
+import { Input } from "./Input"; // Импортируем компонент Input
+import { createLessons } from "../Schedule/ScheduleService";
 
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
@@ -38,13 +41,6 @@ export const ScheduleForm = () => {
     setLessons(initialLessons);
   }, [selectedDay, schedules]);
 
-  console.log("лесонас", lessons);
-
-  // const deleteLesson = (index: number) => {
-  //   const updatedLessons = lessons.filter((lesson, i) => i !== index);
-  //   setLessons(updatedLessons);
-  // };
-
   const handleInputChange = (
     index: number,
     field: string,
@@ -67,6 +63,22 @@ export const ScheduleForm = () => {
     return schedules[day].list.some((schedule) => schedule.weekend);
   };
 
+  const onSubmitForm = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // Создаем объект data с данными из lessons
+    const data = {
+      list: lessons,
+    };
+    console.log(data);
+
+    // Вызываем функцию createLessons для обновления расписания
+    await dispatch(createLessons(data));
+
+    // После успешного обновления, получаем обновленный список для понедельника
+    dispatch(getMondayListAction());
+  };
+
   return (
     <div>
       <h2>Change Schedule</h2>
@@ -79,7 +91,7 @@ export const ScheduleForm = () => {
         <option value="Saturday">Saturday</option>
         <option value="Sunday">Sunday</option>
       </select>
-      <form action="post">
+      <form action="post" onSubmit={onSubmitForm}>
         {lessons.map((lesson, index) => (
           <div key={lesson.id}>
             {index === 0 && (
@@ -95,39 +107,31 @@ export const ScheduleForm = () => {
               </div>
             )}
             <label>Lesson {lesson.id}</label>
-            <div>
-              <label>Time </label>
-              <input
-                type="text"
-                value={lesson.time}
-                onChange={(e) =>
-                  handleInputChange(index, "time", e.target.value)
-                }
-                disabled={lessons.some((lesson) => lesson.weekend)}
-              />
-            </div>
-            <div>
-              <label>Classroom </label>
-              <input
-                type="text"
-                value={lesson.classroom}
-                onChange={(e) =>
-                  handleInputChange(index, "classroom", e.target.value)
-                }
-                disabled={lessons.some((lesson) => lesson.weekend)}
-              />
-            </div>
-            <div>
-              <label>Subject Title </label>
-              <input
-                type="text"
-                value={lesson.subject}
-                onChange={(e) =>
-                  handleInputChange(index, "subject", e.target.value)
-                }
-                disabled={lessons.some((lesson) => lesson.weekend)}
-              />
-            </div>
+            <Input
+              type="text"
+              value={lesson.time}
+              onChange={(e) => handleInputChange(index, "time", e.target.value)}
+              disabled={lessons.some((lesson) => lesson.weekend)}
+              label="Time"
+            />
+            <Input
+              type="text"
+              value={lesson.classroom}
+              onChange={(e) =>
+                handleInputChange(index, "classroom", e.target.value)
+              }
+              disabled={lessons.some((lesson) => lesson.weekend)}
+              label="Classroom"
+            />
+            <Input
+              type="text"
+              value={lesson.subject}
+              onChange={(e) =>
+                handleInputChange(index, "subject", e.target.value)
+              }
+              disabled={lessons.some((lesson) => lesson.weekend)}
+              label="Subject Title"
+            />
             {lessons.length > 1 && (
               <DeleteLessonBtn
                 lessons={lessons}
@@ -141,6 +145,7 @@ export const ScheduleForm = () => {
           <AddLessonBtn lessons={lessons} setLessons={setLessons} />
         )}
         <ClearFieldsBtn lessons={lessons} setLessons={setLessons} />
+        <button>tap</button>
       </form>
     </div>
   );
