@@ -129,7 +129,7 @@
   ],
   "Sunday": [
     {
-      "weekend": true
+      "weekend": false
     }
   ]
 }

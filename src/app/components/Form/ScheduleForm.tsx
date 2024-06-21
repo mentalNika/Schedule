@@ -15,14 +15,6 @@ import {
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
 
-  // interface Lesson {
-  //   id: string;
-  //   time: string;
-  //   classroom: string;
-  //   subject: string;
-  //   weekend: boolean;
-  // }
-
   const [selectedDay, setSelectedDay] = useState("Monday");
   const initialLessons = schedules[selectedDay].list;
   const [lessons, setLessons] = useState<ISchedule[]>(initialLessons);
@@ -77,11 +69,17 @@ export const ScheduleForm = () => {
   };
 
   const disableFunction = (day: any) => {
-    if (schedules[day].list.some((schedule) => schedule.weekend)) {
-      return true;
-    } else {
-      return false;
-    }
+    return schedules[day].list.some((schedule) => schedule.weekend);
+  };
+
+  const clearFields = () => {
+    const clearedLessons = lessons.map((lesson) => ({
+      ...lesson,
+      time: "",
+      classroom: "",
+      subject: "",
+    }));
+    setLessons(clearedLessons);
   };
 
   return (
@@ -97,98 +95,64 @@ export const ScheduleForm = () => {
         <option value="Sunday">Sunday</option>
       </select>
       <form action="post">
-        {schedules[selectedDay].listStatus === ApiStatus.ideal &&
-        disableFunction(selectedDay)
-          ? lessons.map((lesson, index) => (
-              <div key={lesson.id}>
-                <label>Lesson {lesson.id}</label>
-                <div>
-                  <label>Time </label>
-                  <input
-                    type="text"
-                    value={lesson.time}
-                    onChange={(e) =>
-                      handleInputChange(index, "time", e.target.value)
-                    }
-                    disabled
-                  />
-                </div>
-                <div>
-                  <label>Classroom </label>
-                  <input
-                    type="text"
-                    value={lesson.classroom}
-                    onChange={(e) =>
-                      handleInputChange(index, "classroom", e.target.value)
-                    }
-                    disabled
-                  />
-                </div>
-
-                <div>
-                  <label>Subject Title </label>
-                  <input
-                    type="text"
-                    value={lesson.subject}
-                    onChange={(e) =>
-                      handleInputChange(index, "subject", e.target.value)
-                    }
-                    disabled
-                  />
-                </div>
+        {lessons.map((lesson, index) => (
+          <div key={lesson.id}>
+            {index === 0 && (
+              <div>
+                <label>Day of</label>
+                <input
+                  type="checkbox"
+                  onChange={(e) =>
+                    handleInputChange(index, "weekend", e.target.checked)
+                  }
+                  checked={lesson.weekend}
+                />
               </div>
-            ))
-          : lessons.map((lesson, index) => (
-              <div key={lesson.id}>
-                <label>Lesson {lesson.id}</label>
-                <div>
-                  <label>Time </label>
-                  <input
-                    type="text"
-                    value={lesson.time}
-                    onChange={(e) =>
-                      handleInputChange(index, "time", e.target.value)
-                    }
-                  />
-                </div>
-                <div>
-                  <label>Classroom </label>
-                  <input
-                    type="text"
-                    value={lesson.classroom}
-                    onChange={(e) =>
-                      handleInputChange(index, "classroom", e.target.value)
-                    }
-                  />
-                </div>
-
-                <div>
-                  <label>Subject Title </label>
-                  <input
-                    type="text"
-                    value={lesson.subject}
-                    onChange={(e) =>
-                      handleInputChange(index, "subject", e.target.value)
-                    }
-                  />
-                </div>
-              </div>
-            ))}
-
-        <div>
-          <label>Выходной</label>
-          <input
-            type="checkbox"
-            checked={schedules[selectedDay].list.some(
-              (schedule) => schedule.weekend
             )}
-          />
-        </div>
+            <label>Lesson {lesson.id}</label>
+            <div>
+              <label>Time </label>
+              <input
+                type="text"
+                value={lesson.time}
+                onChange={(e) =>
+                  handleInputChange(index, "time", e.target.value)
+                }
+                disabled={lessons.some((lesson) => lesson.weekend)}
+              />
+            </div>
+            <div>
+              <label>Classroom </label>
+              <input
+                type="text"
+                value={lesson.classroom}
+                onChange={(e) =>
+                  handleInputChange(index, "classroom", e.target.value)
+                }
+                disabled={lessons.some((lesson) => lesson.weekend)}
+              />
+            </div>
+            <div>
+              <label>Subject Title </label>
+              <input
+                type="text"
+                value={lesson.subject}
+                onChange={(e) =>
+                  handleInputChange(index, "subject", e.target.value)
+                }
+                disabled={lessons.some((lesson) => lesson.weekend)}
+              />
+            </div>
+          </div>
+        ))}
         {lessons.length < 6 && (
           <button type="button" onClick={addLesson}>
             Add Lesson
           </button>
         )}
+        <button type="button" onClick={clearFields}>
+          Clear Fields
+        </button>
       </form>
     </div>
   );
