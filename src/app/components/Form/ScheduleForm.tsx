@@ -12,6 +12,7 @@ import {
   getWednesdayListAction,
 } from "../Schedule/ScheduleSlice";
 import { AddLessonBtn } from "./AddLessonBtn";
+import { ClearFieldsBtn } from "./ClearFieldsBtn";
 
 export const ScheduleForm = () => {
   const { schedules } = useAppSelector((state: RootState) => state.user);
@@ -65,15 +66,15 @@ export const ScheduleForm = () => {
     return schedules[day].list.some((schedule) => schedule.weekend);
   };
 
-  const clearFields = () => {
-    const clearedLessons = lessons.map((lesson) => ({
-      ...lesson,
-      time: "",
-      classroom: "",
-      subject: "",
-    }));
-    setLessons(clearedLessons);
-  };
+  // const clearFields = () => {
+  //   const clearedLessons = lessons.map((lesson) => ({
+  //     ...lesson,
+  //     time: "",
+  //     classroom: "",
+  //     subject: "",
+  //   }));
+  //   setLessons(clearedLessons);
+  // };
 
   return (
     <div>
@@ -146,9 +147,7 @@ export const ScheduleForm = () => {
         {lessons.length < 6 && (
           <AddLessonBtn lessons={lessons} setLessons={setLessons} />
         )}
-        <button type="button" onClick={clearFields}>
-          Clear Fields
-        </button>
+        <ClearFieldsBtn lessons={lessons} setLessons={setLessons} />
       </form>
     </div>
   );
